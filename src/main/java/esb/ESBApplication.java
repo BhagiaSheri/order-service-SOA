@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.client.RestTemplate;
 
+import static esb.OrderType.INTERNATIONAL;
+
 
 @SpringBootApplication
 public class ESBApplication implements CommandLineRunner {
@@ -26,5 +28,7 @@ public class ESBApplication implements CommandLineRunner {
 	public void run(String... args) {
 		restTemplate.postForLocation("http://localhost:8080/orders", new Order("334", 120.0));
 		restTemplate.postForLocation("http://localhost:8080/orders", new Order("355", 185.0));
+		restTemplate.postForLocation("http://localhost:8080/orders", new Order("356", 135.0, INTERNATIONAL));
+		restTemplate.postForLocation("http://localhost:8080/orders", new Order("357", 200.0, INTERNATIONAL));
 	}
 }
